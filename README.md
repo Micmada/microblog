@@ -28,7 +28,7 @@ A simple microblogging web application where users can create posts, upvote/down
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/your-username/microblog.git
+git clone https://github.com/Micmada/microblog.git
 cd microblog
 ```
 
