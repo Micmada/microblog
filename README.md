@@ -32,7 +32,7 @@ git clone https://github.com/your-username/microblog.git
 cd microblog
 ```
 
-### 2. Create and Activate a Virtual Environment
+### 2. Create and Activate a Virtual Environment(Optional)
 ```sh
 python -m venv venv
 source venv/bin/activate  # On Mac/Linux
