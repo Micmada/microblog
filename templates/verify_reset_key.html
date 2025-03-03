@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Reset Key{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Verify Reset Key</h2>
+    <p>Enter the reset code sent to your email.</p>
+    
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Reset Code:</label>
+            <input type="text" name="reset_key" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Verify</button>
+    </form>
+</div>
+{% endblock %}

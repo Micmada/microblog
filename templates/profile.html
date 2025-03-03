@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>{{ user.username }}'s Profile</h1>
+    <p class="lead">Email: {{ user.email }}</p>
+
+    {% if current_user.id == user.id %}
+        <a class="btn btn-primary" href="{{ url_for('add_post') }}">New Post</a>
+        <a class="btn btn-warning" href="{{ url_for('change_password') }}">Change Password</a>
+    {% endif %}
+</div>
+
+<div class="container mt-5">
+    <h2>{{ user.username }}'s Posts</h2>
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content }}</p>
+                        <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
+                        <div>
+                            {% if current_user.id == user.id %}
+                                <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

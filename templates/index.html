@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Microblog{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>Welcome to Microblog!</h1>
+    <p class="lead">Share your thoughts with the world.</p>
+</div>
+
+<div class="container mt-4">
+    <h2 class="text-center">Recent Posts</h2>
+    <div class="dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort Posts
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+            <li><a class="dropdown-item" href="{{ url_for('index', sort='recent') }}">Most Recent</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('index', sort='top') }}">Most Upvoted</a></li>
+        </ul>
+    </div>
+    
+    <div class="row">
+        {% for post, net_votes, user_vote in posts %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content }}</p>
+                    <small class="text-muted">
+                        Posted by <a href="{{ url_for('profile', username=post.author.username) }}">{{ post.author.username }}</a> 
+                        on {{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}
+                    </small>
+                    <p>👍 {{ net_votes }} Votes</p>
+    
+                    <form action="{{ url_for('upvote', post_id=post.id) }}" method="POST">
+                        <button type="submit"
+                                class="btn {% if user_vote and user_vote.is_upvote %}btn-success{% else %}btn-outline-success{% endif %}" 
+                                {% if not current_user.is_authenticated %}disabled{% endif %}
+                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{% if not current_user.is_authenticated %}Login to like a post{% endif %}">
+                            👍 Upvote
+                        </button>
+                    </form>
+                    
+                    <form action="{{ url_for('downvote', post_id=post.id) }}" method="POST">
+                        <button type="submit"
+                                class="btn {% if user_vote and not user_vote.is_upvote %}btn-danger{% else %}btn-outline-danger{% endif %}"
+                                {% if not current_user.is_authenticated %}disabled{% endif %}
+                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{% if not current_user.is_authenticated %}Login to dislike a post{% endif %}">
+                            👎 Downvote
+                        </button>
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+    </div>
+</div>
+{% endblock %}
