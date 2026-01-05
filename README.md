@@ -6,7 +6,6 @@ details: >
   and localStorage-based preference management for dark mode.
 technologies:
   - flask
-  - python
   - sqlite
   - jwt
 hostedUrl: 
