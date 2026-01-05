@@ -1,3 +1,18 @@
+---
+description: Simple microblog web app with posts, voting, and dark mode
+details: >
+  A Flask-based microblogging application where users can create posts, upvote or downvote content,
+  sort posts by recency or popularity, and toggle between light and dark mode. Includes user authentication
+  and localStorage-based preference management for dark mode.
+technologies:
+  - flask
+  - python
+  - sqlite
+  - jwt
+hostedUrl: 
+---
+
+
 # Microblog
 
 A simple microblogging web application where users can create posts, upvote/downvote posts, and interact with other users. The app includes authentication, voting functionality, sorting, and a dark mode.
