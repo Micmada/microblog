@@ -8,7 +8,6 @@ technologies:
   - flask
   - sqlite
   - jwt
-  - test
 hostedUrl: 
 ---
  
