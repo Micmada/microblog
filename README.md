@@ -1,13 +1,21 @@
 ---
-description: Simple microblog web app with posts, voting, and dark mode
+description: Flask microblogging platform with voting system, dark mode, and real-time interactions
 details: >
-  A Flask-based microblogging application where users can create posts, upvote or downvote content,
-  sort posts by recency or popularity, and toggle between light and dark mode. Includes user authentication
-  and localStorage-based preference management for dark mode.
+  A feature-rich microblogging web application built with Flask featuring user
+  authentication via Flask-Login, an interactive voting system with upvotes and
+  downvotes, and customizable post sorting by recency or popularity. Users can
+  create posts with titles and content, vote on submissions with visual feedback
+  for their choices, and switch between light and dark mode themes with
+  localStorage-based preference persistence. The platform includes secure user
+  registration and login, SQLite database for development, net vote calculations
+  displayed in real-time, and guest user prompts for login when attempting to
+  vote. Features a clean, responsive UI with vote button highlighting, dropdown
+  sorting options, and seamless theme toggling. Built with Flask's modular
+  architecture, SQLAlchemy ORM for database operations, and supports easy
+  migration to PostgreSQL for production deployment on Heroku, Render, or Railway.
 technologies:
   - flask
   - sqlite
-  - jwt
 hostedUrl: 
 ---
  
